@@ -1,0 +1,50 @@
+{
+  "name": "deployment-platform",
+  "version": "1.0.0",
+  "description": "Automated deployment platform for lower environments",
+  "main": "backend/dist/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd backend && npm test",
+    "test:frontend": "cd frontend && npm test",
+    "lint": "npm run lint:backend && npm run lint:frontend",
+    "lint:backend": "cd backend && npm run lint",
+    "lint:frontend": "cd frontend && npm run lint",
+    "docker:dev": "docker-compose up --build",
+    "docker:prod": "docker-compose --profile production up --build -d",
+    "docker:down": "docker-compose down",
+    "setup": "node scripts/setup.js",
+    "deploy": "node scripts/deploy.js"
+  },
+  "keywords": [
+    "deployment",
+    "automation",
+    "terraform",
+    "helm",
+    "ansible",
+    "gcp",
+    "kubernetes"
+  ],
+  "author": "Your Organization",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "@types/node": "^20.5.0",
+    "typescript": "^5.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/deployment-platform.git"
+  }
+}
